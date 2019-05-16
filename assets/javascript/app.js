@@ -8,18 +8,18 @@
     var artist = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "&api_key=HEdbTT0vdsath3C9VzHnGKf0KeRx3w50&q=" + artist + "&limit=10";
 
-    $(".gif").on("click", function () {
+    // $(".gif").on("click", function () {
      
-      var state = $(this).attr("data-state");
+    //   var state = $(this).attr("data-state");
      
-      if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-      } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-      }
-    });
+    //   if (state === "still") {
+    //       $(this).attr("src", $(this).attr("data-animate"));
+    //       $(this).attr("data-state", "animate");
+    //   } else {
+    //       $(this).attr("src", $(this).attr("data-still"));
+    //       $(this).attr("data-state", "still");
+    //   }
+    // });
 
     // Creating an AJAX call for the specific artist button being clicked
     $.ajax({
@@ -33,15 +33,16 @@
 
             // Creating and storing a div tag
             var artistDiv = $("<div class='artist'>");
-            
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            // var titleDiv = $("<div class='artist'>");
+            // var p = $("<p>").text("Rating: " + results[i].title);
+            // p = p.attr("<p>", results[i].title);
             
             var image = $("<img>");
             
             image.attr("src", results[i].images.fixed_width_small_still.url);               
-                 
+            // titleDiv.append(p);     
             artistDiv.append(image);
-            
+            // $("#artists-title").prepend(titleDiv);
             $("#artists-view").prepend(artistDiv);
         }      
     });
